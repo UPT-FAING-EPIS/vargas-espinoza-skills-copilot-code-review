@@ -95,6 +95,13 @@ section h3 {
   font-size: 1.1rem;
 }
 
+.announcement-banner {
+  margin-bottom: 15px;
+  border-left: 4px solid var(--secondary);
+  background: var(--warning-light);
+  color: var(--text-primary);
+}
+
 /* New Layout Styles */
 .main-content-layout {
   display: flex;
