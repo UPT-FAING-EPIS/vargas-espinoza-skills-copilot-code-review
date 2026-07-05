@@ -63,7 +63,7 @@ jobs:
           # Use GitHub API to check for rulesets (only available for public repositories)
           response=$(gh api repos/${{ github.repository }}/rulesets --jq '.[].name' 2>/dev/null || echo "")
           echo $response
-          if echo "$response" | grep -i "copilot" || echo "$response" | grep -i "review"; then
+          if echo "$response" | grep -i "copilot" || echo "$response" | grep -i "review" || [[ -z "$response" ]]; then
             echo "ruleset_exists=true" >> $GITHUB_OUTPUT
           else
             echo "ruleset_exists=false" >> $GITHUB_OUTPUT
