@@ -1,6 +1,7 @@
 name: Step 2
 
 on:
+  workflow_dispatch:
   pull_request:
     types:
       - review_requested
@@ -60,7 +61,7 @@ jobs:
         env:
           REVIEWER_LOGIN: ${{ github.event.requested_reviewer.login }}
         run: |
-          if [[ "${REVIEWER_LOGIN,,}" == "copilot" ]]; then
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" || "${REVIEWER_LOGIN,,}" == "copilot" ]]; then
             echo "Copilot is assigned as reviewer."
           else
             echo "Copilot is NOT assigned as reviewer."
